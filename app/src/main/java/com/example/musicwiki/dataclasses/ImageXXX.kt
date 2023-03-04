@@ -1,6 +1,9 @@
 package com.example.musicwiki.dataclasses
 
+import com.google.gson.annotations.SerializedName
+
 data class ImageXXX(
-    val #text: String,
+    @SerializedName("#text")
+    val text: String,
     val size: String
 )
