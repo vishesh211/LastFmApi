@@ -1,6 +1,9 @@
 package com.example.musicwiki.dataclasses
 
+import com.google.gson.annotations.SerializedName
+
 data class TagsX(
-    val @attr: AttrX,
+    @SerializedName("@attr")
+    val attr: AttrXXXXXX,
     val tag: List<TagX>
 )
