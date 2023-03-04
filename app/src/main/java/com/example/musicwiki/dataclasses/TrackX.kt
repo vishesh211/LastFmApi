@@ -1,7 +1,10 @@
 package com.example.musicwiki.dataclasses
 
+import com.google.gson.annotations.SerializedName
+
 data class TrackX(
-    val @attr: AttrXXXXXXXX,
+    @SerializedName("@attr")
+    val attr: AttrXXXXXX,
     val artist: ArtistXXXX,
     val duration: String,
     val image: List<ImageXXX>,
