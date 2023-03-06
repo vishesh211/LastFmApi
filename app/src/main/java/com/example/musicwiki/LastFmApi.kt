@@ -1,7 +1,6 @@
 package com.example.musicwiki
 
 import com.example.musicwiki.dataclasses.TopTag
-import com.example.musicwiki.models.GetGenres
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

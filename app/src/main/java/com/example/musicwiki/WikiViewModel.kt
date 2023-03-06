@@ -13,7 +13,7 @@ class WikiViewModel(
     fun getGenres() {
         viewModelScope.launch {
             try {
-                val genreList = LastFmInstance.lastFmApi.getGenres(api_key = "3ec4da6005c36f71fdc94b95f46869d6").body()?.name
+                val genreList = LastFmInstance.lastFmApi.getGenres(api_key = "3ec4da6005c36f71fdc94b95f46869d6").body()
                 print("GenreList: $genreList")
                 Log.d("WikiViewModel", "getGenres: $genreList")
             }catch (e: IOException) {
