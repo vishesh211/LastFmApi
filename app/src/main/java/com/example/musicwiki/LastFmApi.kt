@@ -1,5 +1,6 @@
 package com.example.musicwiki
 
+import com.example.musicwiki.dataclasses.TopTag
 import com.example.musicwiki.models.GetGenres
 import retrofit2.Response
 import retrofit2.http.GET
@@ -16,5 +17,5 @@ interface LastFmApi {
         @Query("method") method: String = "tag.getTopTags",
         @Query("api_key") api_key: String,
         @Query("format") format: String = "json"
-    ): Response<GetGenres.Response>
+    ): Response<TopTag>
 }
