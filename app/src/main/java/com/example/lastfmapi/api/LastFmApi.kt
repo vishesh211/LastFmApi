@@ -9,12 +9,13 @@ interface LastFmApi {
 
     companion object {
         const val URL = "https://ws.audioscrobbler.com"
+        const val API_KEY: String = "3ec4da6005c36f71fdc94b95f46869d6"
     }
 
     @GET("/2.0")
     suspend fun getGenres(
         @Query("method") method: String = "tag.getTopTags",
-        @Query("api_key") api_key:String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key:String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTopTags>
 
@@ -22,7 +23,7 @@ interface LastFmApi {
     suspend fun getGenreInfo(
         @Query("method") method: String = "tag.getInfo",
         @Query("tag") tag: String,
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTagInfo>
 
@@ -30,7 +31,7 @@ interface LastFmApi {
     suspend fun getTagTopAlbums(
         @Query("method") method: String = "tag.gettopalbums",
         @Query("tag") tag: String,
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTopAlbums>
 
@@ -38,7 +39,7 @@ interface LastFmApi {
     suspend fun getTagTopArtists(
         @Query("method") method: String = "tag.gettopartists",
         @Query("tag") tag: String,
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTopArtists>
 
@@ -46,7 +47,7 @@ interface LastFmApi {
     suspend fun getTagTopTracks(
         @Query("method") method: String = "tag.gettoptracks",
         @Query("tag") tag: String,
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTopTracks>
 
@@ -55,7 +56,7 @@ interface LastFmApi {
         @Query("artist") artist: String,
         @Query("album") album: String,
         @Query("method") method: String = "album.getinfo",
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetAlbumInfo>
 
@@ -63,7 +64,7 @@ interface LastFmApi {
     suspend fun getArtistInfo(
         @Query("artist") artist: String,
         @Query("method") method: String = "artist.getinfo",
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetArtistInfo>
 
@@ -71,7 +72,7 @@ interface LastFmApi {
     suspend fun getTopTracksForArtist(
         @Query("artist") artist: String,
         @Query("method") method: String = "artist.gettoptracks",
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTopTracksForArtist>
 
@@ -79,7 +80,7 @@ interface LastFmApi {
     suspend fun getTopAlbumsForArtist(
         @Query("artist") artist: String,
         @Query("method") method: String = "artist.gettopalbums",
-        @Query("api_key") api_key: String = "3ec4da6005c36f71fdc94b95f46869d6",
+        @Query("api_key") api_key: String = API_KEY,
         @Query("format") format: String = "json"
     ): Response<GetTopAlbumsForArtist>
 }
