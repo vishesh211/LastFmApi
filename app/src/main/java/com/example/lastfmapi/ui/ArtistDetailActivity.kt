@@ -14,6 +14,8 @@ import com.example.lastfmapi.dataclasses.TagXX
 import com.example.lastfmapi.dataclasses.TrackXX
 import com.example.lastfmapi.viewmodel.LastFmViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.ln
+import kotlin.math.pow
 
 @AndroidEntryPoint
 class ArtistDetailActivity : AppCompatActivity() {
@@ -45,8 +47,10 @@ class ArtistDetailActivity : AppCompatActivity() {
 
         viewModel.artistInfo.observe(this) {
             Glide.with(this).load(it.image[1].text).into(binding.artistInfoImage)
-            binding.artistInfoPlayCountNumber.text = it.stats.playcount
-            binding.artistInfoFollowerNumber.text = it.stats.listeners
+            val playCount = getFormattedNumber(it.stats.playcount.toLong())
+            binding.artistInfoPlayCountNumber.text = playCount
+            val listeners = getFormattedNumber(it.stats.listeners.toLong())
+            binding.artistInfoFollowerNumber.text = listeners
             genreNameList.addAll(it.tags.tag)
             binding.artistInfoRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             binding.artistInfoRv.adapter = albumGenreInfoAdapter
@@ -63,5 +67,11 @@ class ArtistDetailActivity : AppCompatActivity() {
             binding.topAlbumsArtistRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             binding.topAlbumsArtistRv.adapter = topAlbumsArtistDetailAdapter
         }
+    }
+
+    fun getFormattedNumber(count: Long): String {
+        if (count < 1000) return "" + count
+        val exp = (ln(count.toDouble()) / ln(1000.0)).toInt()
+        return String.format("%.1f %c", count / 1000.0.pow(exp.toDouble()), "kMGTPE"[exp - 1])
     }
 }
